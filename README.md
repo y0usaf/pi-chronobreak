@@ -19,11 +19,17 @@ There is no strike limit: every detected loop is cut and re-run, indefinitely.
 chronobreak is a spectator: it never touches files or the JS kernel - it only
 aborts generation, replaces one assistant message, and queues a user message.
 
+## Install
+
+```sh
+pi install git:github.com/y0usaf/pi-chronobreak
+```
+
 ## Development
 
 Uses pi extension event API (message_start / message_update / message_end /
-agent_end). See DESIGN.md.
+agent_end).
 
-Dev load: pi -e extensions/pi-chronobreak
-Lint: biome lint extensions/pi-chronobreak/src/index.ts
-Nix (once wired): nix build .#pi-chronobreak, nix flake check.
+Dev load: pi -e .
+Lint: biome lint src/index.ts
+Test: bun test
