@@ -18,8 +18,6 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 const SCRUB_TEXT = "[generation loop terminated by chronobreak - re-running]";
 
-// --- Loop detection core (pure: text in, verdict out, no state) ---
-
 const MAX_SEGMENT_REPEAT = 3;
 const MIN_CHUNK_LEN = 12;
 
@@ -120,8 +118,6 @@ export default function (pi: ExtensionAPI): void {
     ctx.abort();
   });
 
-  // The aborted assistant message is persisted by pi; scrub it to a one-line
-  // marker so the repeated garbage never stays in context.
   pi.on("message_end", (event) => {
     if (!terminating) return;
     if (event.message.role !== "assistant") return;

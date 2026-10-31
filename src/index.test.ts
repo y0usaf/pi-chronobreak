@@ -2,7 +2,6 @@ import { describe, expect, test } from "bun:test";
 import { detectLoop } from "./index";
 import chronobreak from "./index";
 
-// Real text from the session that motivated this extension.
 const LOOP_TEXT = [
   "Let me check the system mtime and module import.",
   "Let me check the system mtime and module import now.",
